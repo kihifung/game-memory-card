@@ -1,4 +1,3 @@
-// import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Card } from "./components/Card";
@@ -14,14 +13,24 @@ const srcArray = [
 ];
 
 function App() {
-  const [cards, setCards] = useState([]);
-  // 紀錄第一次翻牌和第二次翻牌的結果
-  const [firstChoice, setFirstChoice] = useState(null);
-  const [secondChoice, setSecondChoice] = useState(null);
+  const [cards, setCards] = useState([]); // 紀錄所有卡片
+  const [firstChoice, setFirstChoice] = useState(null); // 紀錄第一次翻牌的結果
+  const [secondChoice, setSecondChoice] = useState(null); // 紀錄第二次翻牌的結果
   const [disabled, setDisabled] = useState(false);
+
   // 比對翻牌結果
   const handleClick = (card) => {
-    firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+    if (disabled) return; //防止在禁用狀態下點擊
+
+    if (card === firstChoice) {
+      return; // 防止點擊同一張卡片兩次
+    }
+
+    if (!firstChoice) {
+      setFirstChoice(card);
+    } else {
+      setSecondChoice(card);
+    }
   };
   // 重整 重置
   const resetTurn = () => {
@@ -50,11 +59,11 @@ function App() {
         }, 1000);
       }
     }
-    // console.log(firstChoice, secondChoice);
   }, [firstChoice, secondChoice]);
-  useEffect(() => {
-    console.log(cards);
-  }, [cards]);
+
+  // useEffect(() => {
+  //   console.log(cards);
+  // }, [cards]);
 
   //洗牌
   const shuffleCards = () => {
