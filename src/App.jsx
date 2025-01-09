@@ -22,6 +22,12 @@ function App() {
   const handleClick = (card) => {
     firstChoice ? setSecondChoice(card) : setFirstChoice(card);
   };
+  // 重整 重置
+  const resetTurn = () => {
+    setFirstChoice(null);
+    setSecondChoice(null);
+  };
+
   // 清除翻牌結果
   useEffect(() => {
     if (firstChoice && secondChoice) {
@@ -34,10 +40,12 @@ function App() {
             return card;
           });
         });
+        resetTurn();
+      } else {
+        setTimeout(() => {
+          resetTurn();
+        }, 1000);
       }
-
-      setFirstChoice(null);
-      setSecondChoice(null);
     }
     // console.log(firstChoice, secondChoice);
   }, [firstChoice, secondChoice]);
@@ -66,7 +74,14 @@ function App() {
       </div>
       <div className="container">
         {cards.map((card) => (
-          <Card card={card} key={card.id} handleClick={handleClick} />
+          <Card
+            card={card}
+            key={card.id}
+            handleClick={handleClick}
+            flipped={
+              card.matched || card === firstChoice || card === secondChoice
+            }
+          />
         ))}
       </div>
     </>
