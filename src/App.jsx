@@ -1,5 +1,6 @@
-import "./App.css";
+// import React from "react";
 import { useEffect, useState } from "react";
+import "./App.css";
 import { Card } from "./components/Card";
 
 //牌卡陣列
@@ -14,6 +15,36 @@ const srcArray = [
 
 function App() {
   const [cards, setCards] = useState([]);
+  // 紀錄第一次翻牌和第二次翻牌的結果
+  const [firstChoice, setFirstChoice] = useState(null);
+  const [secondChoice, setSecondChoice] = useState(null);
+  // 比對翻牌結果
+  const handleClick = (card) => {
+    firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+  };
+  // 清除翻牌結果
+  useEffect(() => {
+    if (firstChoice && secondChoice) {
+      if (firstChoice.src === secondChoice.src) {
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === firstChoice.src) {
+              return { ...card, matched: true };
+            }
+            return card;
+          });
+        });
+      }
+
+      setFirstChoice(null);
+      setSecondChoice(null);
+    }
+    // console.log(firstChoice, secondChoice);
+  }, [firstChoice, secondChoice]);
+  useEffect(() => {
+    console.log(cards);
+  }, [cards]);
+
   //洗牌
   const shuffleCards = () => {
     const shuffledCards = [...srcArray, ...srcArray]
@@ -35,7 +66,7 @@ function App() {
       </div>
       <div className="container">
         {cards.map((card) => (
-          <Card card={card} key={card.id} />
+          <Card card={card} key={card.id} handleClick={handleClick} />
         ))}
       </div>
     </>
