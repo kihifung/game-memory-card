@@ -1,5 +1,5 @@
 import "./App.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 //牌卡陣列
 const srcArray = [
   {src: "black-1.jpg", matched: false },
@@ -15,13 +15,19 @@ function App() {
   const [cards, setCards] = useState([])
   //洗牌
   const shuffleCards = () => {
-    const shuffleCards = [...srcArray, ...srcArray].sort(
-      () => Math.random() - 0.5
-    )
+    const shuffledCards = [...srcArray, ...srcArray]
+      .sort(() => Math.random() - 0.5)
+      .map((card)=>({ ...card, id: Math.random()}))
+
+    setCards(shuffledCards)
   }
 
-
-
+  useEffect(() => {
+    shuffleCards()
+  }, [])
+  useEffect(() => {
+    console.log(cards)
+  }, [cards])
 
   return (
     <>
