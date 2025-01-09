@@ -18,6 +18,7 @@ function App() {
   // 紀錄第一次翻牌和第二次翻牌的結果
   const [firstChoice, setFirstChoice] = useState(null);
   const [secondChoice, setSecondChoice] = useState(null);
+  const [disabled, setDisabled] = useState(false);
   // 比對翻牌結果
   const handleClick = (card) => {
     firstChoice ? setSecondChoice(card) : setFirstChoice(card);
@@ -26,11 +27,13 @@ function App() {
   const resetTurn = () => {
     setFirstChoice(null);
     setSecondChoice(null);
+    setDisabled(false);
   };
 
   // 清除翻牌結果
   useEffect(() => {
     if (firstChoice && secondChoice) {
+      setDisabled(true);
       if (firstChoice.src === secondChoice.src) {
         setCards((prevCards) => {
           return prevCards.map((card) => {
@@ -60,6 +63,8 @@ function App() {
       .map((card) => ({ ...card, id: Math.random() }));
 
     setCards(shuffledCards);
+    setFirstChoice(null);
+    setSecondChoice(null);
   };
 
   useEffect(() => {
@@ -70,7 +75,9 @@ function App() {
     <>
       <h1 className="heading">紙牌遊戲</h1>
       <div className="flex">
-        <button className="restart">New Game</button>
+        <button className="restart" onClick={shuffleCards}>
+          New Game
+        </button>
       </div>
       <div className="container">
         {cards.map((card) => (
@@ -81,6 +88,7 @@ function App() {
             flipped={
               card.matched || card === firstChoice || card === secondChoice
             }
+            disabled={disabled}
           />
         ))}
       </div>
