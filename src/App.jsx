@@ -25,9 +25,6 @@ function App() {
   useEffect(() => {
     shuffleCards()
   }, [])
-  useEffect(() => {
-    console.log(cards)
-  }, [cards])
 
   return (
     <>
@@ -35,7 +32,13 @@ function App() {
       <div className="flex">
         <button className="restart">New Game</button>
       </div>
-      <div className="container"></div>
+      <div className="container">
+        {cards.map(card=>( 
+          <div key={card.id}>
+          <img src={card.src} alt="cat pic" width="200"></img>
+          <img src="rear.svg" alt="card back" width="200" />
+        </div> ))}
+      </div>
     </>
   )
 }
