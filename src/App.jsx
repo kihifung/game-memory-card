@@ -90,7 +90,7 @@ function App() {
 
   return (
     <>
-      <h1 className="heading">紙牌遊戲</h1>
+      <h1 className="heading">咪咪</h1>
       <div className="flex">
         <button className="restart" onClick={shuffleCards}>
           New Game
