@@ -9,8 +9,25 @@ const Card = ({ card, handleClick, flipped, disabled }) => {
   };
   return (
     <div className={`card ${flipped ? "flipped" : ""}`} onClick={onClick}>
-      <img src={card.src} alt="cat pic" width="200" className="front" />
-      <img src="rear.svg" alt="card back" width="200" className="rear" />
+      <div className="image-container front">
+        <img
+          src={card.src}
+          alt="cat pic"
+          width={200}
+          height={300}
+          className="image-content"
+        />
+      </div>
+      <div className="image-container rear">
+        <img
+          src="/corey/new-back.jpg"
+          // src="rear.svg"
+          alt="card back"
+          width={200}
+          height={300}
+          className="image-content"
+        />
+      </div>
     </div>
   );
 };

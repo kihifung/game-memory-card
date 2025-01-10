@@ -3,13 +3,21 @@ import "./App.css";
 import { Card } from "./components/Card";
 
 //牌卡陣列
+// const srcArray = [
+//   { src: "black-1.jpg", matched: false },
+//   { src: "black-2.jpg", matched: false },
+//   { src: "black-3.jpg", matched: false },
+//   { src: "yellow-1.jpg", matched: false },
+//   { src: "yellow-2.jpg", matched: false },
+//   { src: "yellow-3.jpg", matched: false },
+// ];
 const srcArray = [
-  { src: "black-1.jpg", matched: false },
-  { src: "black-2.jpg", matched: false },
-  { src: "black-3.jpg", matched: false },
-  { src: "yellow-1.jpg", matched: false },
-  { src: "yellow-2.jpg", matched: false },
-  { src: "yellow-3.jpg", matched: false },
+  { src: "/corey/mimi-001.jpg", matched: false },
+  { src: "/corey/mimi-002.jpg", matched: false },
+  { src: "/corey/mimi-003.jpg", matched: false },
+  { src: "/corey/mimi-004.jpg", matched: false },
+  { src: "/corey/mimi-005.jpg", matched: false },
+  { src: "/corey/mimi-006.jpg", matched: false },
 ];
 
 function App() {

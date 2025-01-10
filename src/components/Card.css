@@ -1,16 +1,37 @@
 .card {
   position: relative;
+  width: 200px; /* 固定寬度 */
+  height: 300px; /* 固定高度 */
+  perspective: 1000px; /* 為 3D 翻轉設置透視效果 */
 }
-.card img {
+/* .card img {
   display: block;
   border: 2px solid #fff;
   border-radius: 6px;
+} */
+
+.card .image-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* 確保多餘部分被裁切 */
+  backface-visibility: hidden; /* 隱藏背面圖片 */
+  border: 2px solid #fff;
+  border-radius: 6px;
+  transform-style: preserve-3d;
+}
+
+.card .image-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 等比例縮放並裁切 */
+  object-position: bottom; /* 從底部裁切多餘部分 */
 }
 
 .card .front {
   transform: rotateY(90deg);
   transition: all ease-in 0.2s;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .flipped .front {
