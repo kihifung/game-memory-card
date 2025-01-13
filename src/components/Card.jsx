@@ -20,8 +20,8 @@ const Card = ({ card, handleClick, flipped, disabled }) => {
       </div>
       <div className="image-container rear">
         <img
-          src="/corey/new-back.jpg"
-          // src="rear.svg"
+          //src="/corey/new-back.jpg"
+          src="rear.svg"
           alt="card back"
           width={200}
           height={300}

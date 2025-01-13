@@ -3,22 +3,22 @@ import "./App.css";
 import { Card } from "./components/Card";
 
 //牌卡陣列
-// const srcArray = [
-//   { src: "black-1.jpg", matched: false },
-//   { src: "black-2.jpg", matched: false },
-//   { src: "black-3.jpg", matched: false },
-//   { src: "yellow-1.jpg", matched: false },
-//   { src: "yellow-2.jpg", matched: false },
-//   { src: "yellow-3.jpg", matched: false },
-// ];
 const srcArray = [
-  { src: "/corey/mimi-001.jpg", matched: false },
-  { src: "/corey/mimi-002.jpg", matched: false },
-  { src: "/corey/mimi-003.jpg", matched: false },
-  { src: "/corey/mimi-004.jpg", matched: false },
-  { src: "/corey/mimi-005.jpg", matched: false },
-  { src: "/corey/mimi-006.jpg", matched: false },
+  { src: "black-1.jpg", matched: false },
+  { src: "black-2.jpg", matched: false },
+  { src: "black-3.jpg", matched: false },
+  { src: "yellow-1.jpg", matched: false },
+  { src: "yellow-2.jpg", matched: false },
+  { src: "yellow-3.jpg", matched: false },
 ];
+// const srcArray = [
+//   { src: "/corey/mimi-001.jpg", matched: false },
+//   { src: "/corey/mimi-002.jpg", matched: false },
+//   { src: "/corey/mimi-003.jpg", matched: false },
+//   { src: "/corey/mimi-004.jpg", matched: false },
+//   { src: "/corey/mimi-005.jpg", matched: false },
+//   { src: "/corey/mimi-006.jpg", matched: false },
+// ];
 
 function App() {
   const [cards, setCards] = useState([]); // 紀錄所有卡片
@@ -90,7 +90,8 @@ function App() {
 
   return (
     <>
-      <h1 className="heading">咪咪</h1>
+      <h1 className="heading">翻牌遊戲</h1>
+      {/* <h1 className="heading">咪咪</h1> */}
       <div className="flex">
         <button className="restart" onClick={shuffleCards}>
           New Game
