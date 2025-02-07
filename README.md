@@ -1,3 +1,7 @@
+展示連結：https://a-flip-card-game.netlify.app/
+
+---
+
 # 動手玩 React！（翻牌記憶遊戲）
 
 線上試玩：https://5xcampus-game-memory-card.netlify.app/
